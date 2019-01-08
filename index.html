@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Publish your project. Any doubts? We can help you! - Terasol Technologies</title>
+    <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16">
+    <meta name="description" content="Briefly explain the needs of your project so that our system can assign it to the most suitable agency or professional. We help you every step of the way!" />
+    <meta name="ROBOTS" content="INDEX, FOLLOW">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/style.min.css" rel="stylesheet">
+    <link href="css/parsley.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500" rel="stylesheet">
+    <link rel="stylesheet" href="css/intlTelInput.min.css">
+    <link rel="stylesheet" href="css/pretty-checkbox.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/parsley.min.js"></script>
+    <script>
+    $( function() {
+      $( "#platform" ).selectmenu();
+      $( "#budget" ).selectmenu();
+      $( "#startdate" ).selectmenu();
+    } );
+    </script>
+    <script type="text/javascript">
+        (
+        function($){
+
+            $.fn.shuffle = function() {
+                return this.each(function(){
+                    var items = $(this).children();
+
+                    return (items.length)
+                        ? $(this).html($.shuffle(items,$(this)))
+                    : this;
+                });
+            }
+
+            $.fn.validate = function() {
+                var res = false;
+                this.each(function(){
+                    var arr = $(this).children();
+                    console.log(arr);
+                    res = ((arr[0].innerHTML=="1")&&
+                        (arr[1].innerHTML=="2")&&
+                        (arr[2].innerHTML=="3")&&
+                        (arr[3].innerHTML=="4")&&
+                        (arr[4].innerHTML=="5")&&
+                        (arr[5].innerHTML=="6"));
+                });
+                return res;
+            }
+
+            $.shuffle = function(arr,obj) {
+                for(
+                var j, x, i = arr.length; i;
+                j = parseInt(Math.random() * i),
+                x = arr[--i], arr[i] = arr[j], arr[j] = x
+            );
+                if(arr[0].innerHTML=="1") obj.html($.shuffle(arr,obj))
+                else return arr;
+            }
+
+        })(jQuery);
+
+        $(function() {
+            $("#sortable").sortable();
+            $("#sortable").disableSelection();
+            $('#sortable').shuffle();
+
+            $("#formsubmit").click(function(){
+                ($('#sortable').validate()) ? alert("Yeah, you are a human!") : alert("No, you are not a human!");
+            });
+        });
+    </script>
+    <link href="css/dropzone.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="bird-holder dpn">
+        <div class="bird">                             
+            <div class="left-wing"></div>                                
+            <div class="right-wing"></div>                              
+        </div>
+        <p>Please wait while we receive your details...</p>
+    </div>
+
+
+    <div class="logo">
+      <img src="img/logo.png" class="img-fluid">
+    </div>
+
+    <a href="https://www.terasoltechnologies.com">
+      <div class="cancel close">
+        <img src="img/close.png" class="img-fluid">
+      </div>
+    </a>
+
+    <!-- form section -->
+    <div class="form-card">
+            
+        <div class="form-title">
+            <span class="wallet">
+                <img src="img/coffee.png">
+            </span>
+            <span class="title">Request for a free quote</span>
+        </div>
+        
+        <!-- <div class="error dpn">
+            <p class="errors dpn">Please fill in the necessary* fields.</p>
+        </div> -->
+
+        <form action="mailer.php" method="post" id="enquiry" enctype="multipart/form-data" data-parsley-validate>
+            <div class="form-body">
+                <div class="container">
+                    
+                    <div class="row align-items-center">
+                        <div class="col-md-4 col-sm-12">
+                            Email*
+                        </div>
+                        <div class="col-md-8 col-sm-12 mail">
+                            <input type="email" id="email" name="email" placeholder="Enter your email" data-parsley-type="email" data-parsley-type-message="Please Enter Valid Email!" required data-parsley-trigger="change" data-parsley-errors-container="#emailError">
+                            <img src="img/check.svg" class="check dpn checkEmail">
+                            <div id="emailError"></div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center warning">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-8 col-sm-12 warn">
+                            <span class="emailwarn">We recommend you use a work email address instead of a personal</span>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-md-4 col-sm-12">
+                            Phone*
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <div class="call">
+                                <input type="text" id="demo" name="phone" maxlength="15" oninput="numberOnly(this.id);" required data-parsley-trigger="change" data-parsley-errors-container="#phoneError">
+                                <img src="img/check.svg" class="check dpn checkPhone">
+                                <input type="number" class="dpn" id="countrycode" name="pincode" value="1" />
+                                <div id="phoneError"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center linkedin">
+                        <div class="col-md-4 col-sm-12">
+                            Full Name*
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <input type="text" name="fname" id="fname" placeholder="Enter Your Full Name" required data-parsley-trigger="change" data-parsley-type-message="Enter Valid Name!" data-parsley-errors-container="#nameError">
+                            <img src="img/check.svg" class="check dpn checkName">
+                            <div id="nameError"></div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center linkedin">
+                        <div class="col-md-4 col-sm-12">
+                            Skype ID / Whatsapp Number
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <input type="text" name="skype" id="skype" placeholder="Enter Skype ID / Whatsapp Number" data-parsley-trigger="change">
+                            <img src="img/check.svg" class="check dpn checkSkype">
+                            <div id="skypeError"></div>
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center company">
+                        <div class="col-md-4 col-sm-12">
+                            Company Name
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <input type="text" name="company" id="company" placeholder="Enter Your Company Name" data-parsley-trigger="change" data-parsley-type-message="This is a required field!" data-parsley-errors-container="#companyError">
+                            <img src="img/check.svg" class="check dpn checkCompany">
+                            <div id="companyError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="row align-items-center">
+                        <div class="col-md-4 col-sm-12">
+                            What are you looking for?*
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <select id="platform" name="platform" required data-parsley-error-message="Please select an Option!" data-parsley-errors-container="#platformError" data-parsley-trigger="change">
+                                <option value="">Choose an Option</option>
+                                <option value="MobileApps" data-platform="Mobile Apps">Mobile Apps</option>
+                                <option value="WebDevelopment" data-platform="Web Development">Web Development</option>
+                                <option value="Enterprise" data-platform="Enterprise Software Solution">Enterprise Software Solution</option>
+                                <option value="Game" data-platform="Game Development">Game Development</option>
+                                <option value="SmartTV" data-platform="Smart TV Apps">Smart TV Apps</option>
+                                <option value="TeamService" data-platform="Dedicated Team Service">Dedicated Team Service</option>
+                            </select>
+                            <img src="img/check.svg" class="check dpn checkPlatform">
+                            <div id="platformError"></div>
+                            <input type="text" name="platformFinal" id="platformFinal" class="dpn">
+                        </div>
+                    </div>
+                    <div class="row align-items-center project dpn">
+                        <div class="col-md-4 col-sm-12">
+                            Whats your Project all About?*
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <textarea id="project" name="project" placeholder="Enter Something About the Project" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Describe some more!!!" data-parsley-validation-threshold="10" required data-parsley-errors-container="#projectError"></textarea>
+                            <img src="img/check.svg" class="check dpn checkProject">
+                            <div id="projectError"></div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center budget dpn">
+                        <div class="col-md-4 col-sm-12">
+                            Budget Range*
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <select id="budget" name="budget" required data-parsley-error-message="Please select an Option!" data-parsley-errors-container="#budgetError">
+                                <option value="">Choose an Option</option>
+                                <option value="less10k" data-budget="Less than $10,000">Less than $10,000</option>
+                                <option value="10kto25k" data-budget="$10,000 - $25,000">$10,000 - $25,000</option>
+                                <option value="25kto50k" data-budget="$25,000 - $50,000">$25,000 - $50,000</option>
+                                <option value="50kto1lac" data-budget="$50,000 - $100,000">$50,000 - $100,000</option>
+                                <option value="more1lac" data-budget="$100,000+">$100,000+</option>
+                                <option value="guidance" data-budget="Needs Budget Guidance">Needs Budget Guidance</option>
+                            </select>
+                            <img src="img/check.svg" class="check dpn checkBudget">
+                            <div id="budgetError"></div>
+                            <input type="text" name="budgetFinal" id="budgetFinal" class="dpn">
+                        </div>
+                    </div>
+                    <div class="row align-items-center startdate dpn">
+                        <div class="col-md-4 col-sm-12">
+                            When do you want to get started?*
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <select id="startdate" name="startdate" required data-parsley-error-message="Please select an Option!" data-parsley-errors-container="#startdateError">
+                                <option value="">Choose an Option</option>
+                                <option value="immediate" data-date="Immediately">Immediately</option>
+                                <option value="week" data-date="Within a week">Within a week</option>
+                                <option value="month" data-date="Within a month">Within a month</option>
+                                <option value="1to3mnths" data-date="1-3 months">1-3 months</option>
+                                <option value="3+mnths" data-date="3+ months">3+ months</option>
+                            </select>
+                            <img src="img/check.svg" class="check dpn checkStartdate">
+                            <div id="startdateError"></div>
+                            <input type="text" name="dateFinal" id="dateFinal" class="dpn">
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center startdate dpn">
+                        <div class="col-md-4 col-sm-12">
+                            Attach the files you think we might need
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <input name="uploaddata" id="uploaddata" type="file" accept="application/pdf"/>
+                            <img src="img/check.svg" class="check dpn checkDrop">
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center captcha dpn">
+                        <div class="col-md-4 col-sm-12">
+                            Are you for real?<br>
+                            <span class="emailwarn">We prefer that our service be used by people, not bots.</span>
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <div class="captcha_form">
+                                <div class="captcha_wrap">
+                                    <div class="captcha">
+                                        Drag to order
+                                    </div>
+                                    <ul id="sortable">
+                                        <li class="captchaItem">1</li>
+                                        <li class="captchaItem">2</li>
+                                        <li class="captchaItem">3</li>
+                                        <li class="captchaItem">4</li>
+                                        <li class="captchaItem">5</li>
+                                        <li class="captchaItem">6</li>
+                                    </ul>
+                                </div>    
+                            <div id="captchaError" class="text-red dpn">Invalid Captcha!!!</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+       
+
+        <div class="form-footer">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="pretty p-default p-curve p-toggle">
+                            <input type="checkbox" id="ndaconfirm" name="nda" />
+                            <div class="state p-info-o p-on">
+                                <label>Yes, I would like a copy of NDA</label>
+                            </div>
+                            <div class="state p-off">
+                                <label>No, I do not want an NDA</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                    <div class="col-md-8 col-sm-12">
+                        By clicking on the "Get Estimate" button, you agree to the <a href="https://www.terasoltechnologies.com/privacy-policy.html" target="_blank"><span class="terms">terms and conditions of Terasol Technologies.</span></a>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                            <!-- <a href="javascript:void(0)" onclick="validate()">Link</a> -->
+                        <button type="submit" class="btn submit" disabled id="submit" onclick="validateForm()" value="Submit" >Get Estimate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    
+    
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/intlTelInput.min.js"></script>
+    <script src="js/utils.min.js"></script>
+    <script src="js/index.min.js"></script>
+    <script src="js/dropzone.js"></script>
+    <script>
+        $("div#dropzones").dropzone({ 
+            url: "/upload",                        
+            autoProcessQueue: false,
+            maxFiles: 1,
+            acceptedFiles: ".pdf, .doc",
+            addRemoveLinks: true
+        });
+        
+        function validateForm() {
+            if($('#sortable').validate()) { 
+                if($('#enquiry').parsley().validate()) { 
+                    $('#enquiry').submit(); 
+                    $('#captchaError').addClass('dpn');
+                    $('.bird-holder').removeClass('dpn');
+                } 
+            }
+            else {
+                $('#captchaError').removeClass('dpn');
+            } 
+        }
+
+        $("#ndaconfirm").change(function() {
+            if($('#ndaconfirm').prop('checked')) {
+                $("#company").prop('required', true);
+            }
+            else {
+                $("#company").prop('required', false);
+            }
+        })
+
+        $("#platform").selectmenu({
+            change: function () {
+                var e = $("select#platform option:checked").attr('data-platform');
+                $('#platformFinal').val(e);
+                console.log(e);
+                if("" == e)
+                {
+                    $(".project").addClass("dpn"),
+                    $(".budget").addClass("dpn"),
+                    $(".startdate").addClass("dpn"),
+                    $(".drop").addClass("dpn"),
+                    $(".checkPlatform").addClass("dpn"),
+                    $("#submit").removeClass("submit-enabled"),
+                    $("#submit").prop("disabled", true),
+                    $(".captcha").addClass("dpn")
+                }
+                else { 
+                    $(".project").removeClass("dpn"),
+                    $(".budget").removeClass("dpn"),
+                    $(".startdate").removeClass("dpn"),
+                    $(".drop").removeClass("dpn"),
+                    $(".checkPlatform").removeClass("dpn"),
+                    $("#submit").addClass("submit-enabled"),
+                    $("#submit").prop("disabled", false),
+                    $(".captcha").removeClass("dpn")
+                }
+            }
+        });
+
+        $("#budget").selectmenu({
+            change: function () {
+                var e = $("select#budget option:checked").attr('data-budget');
+                $('#budgetFinal').val(e);
+                if("" == e)
+                {
+                    $(".checkBudget").addClass("dpn"),
+                    $('#budget').css('background-color','#f2dede !important');
+                }
+                else { 
+                    $(".checkBudget").removeClass("dpn")
+                }
+            }
+        });
+
+        $("#startdate").selectmenu({
+            change: function () {
+                var e = $("select#startdate option:checked").attr('data-date');
+                $('#dateFinal').val(e);
+                console.log(e);
+                if("" == e)
+                {
+                    $(".checkStartdate").addClass("dpn")
+                }
+                else { 
+                    $(".checkStartdate").removeClass("dpn")
+                }
+            }
+        });
+
+        $(function () {
+            $('#email').parsley().on('field:validated', function() {
+                var ok = $('.parsley-error').length === 0;
+                $('.checkEmail').toggleClass('dpn', !ok);
+            })
+            .on('form:submit', function() {
+                return false; // Don't submit form for this demo
+            });
+            $('#demo').parsley().on('field:validated', function() {
+                var ok = $('.parsley-error').length === 0;
+                $('.checkPhone').toggleClass('dpn', !ok);
+            })
+            .on('form:submit', function() {
+                return false; // Don't submit form for this demo
+            });
+            $('#fname').parsley().on('field:validated', function() {
+                var ok = $('.parsley-error').length === 0;
+                $('.checkName').toggleClass('dpn', !ok);
+            })
+            .on('form:submit', function() {
+                return false; // Don't submit form for this demo
+            });
+            $('#skype').parsley().on('field:validated', function() {
+                var ok = $('.parsley-error').length === 0;
+                $('.checkSkype').toggleClass('dpn', !ok);
+            })
+            .on('form:submit', function() {
+                return false; // Don't submit form for this demo
+            });
+
+            $('#company').parsley().on('field:validated', function() {
+                var ok = $('.parsley-error').length === 0;
+                $('.checkCompany').toggleClass('dpn', !ok);
+            })
+            .on('form:submit', function() {
+                return false; // Don't submit form for this demo
+            });
+
+            $('#project').parsley().on('field:validated', function() {
+                var ok = $('.parsley-error').length === 0;
+                $('.checkProject').toggleClass('dpn', !ok);
+            })
+            .on('form:submit', function() {
+                return false; // Don't submit form for this demo
+            });
+        });
+    </script>
+</body>
+
+</html>

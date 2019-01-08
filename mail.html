@@ -1,0 +1,140 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+    <!-- disable auto telephone linking in iOS test -->
+    <style type="text/css">
+    body {
+        font-family: sans-serif;
+    }
+    .row{
+      width: 100%;
+      display: block;
+      white-space: nowrap;
+      margin-bottom: 20px;
+    }
+    .fakebg {
+        background-image: url("http://test.terasol.in/nitin/enquiryform/img/mailbg.jpg");
+        background-repeat: no-repeat; 
+        background-size: 150%; 
+        padding: 2.5rem 0;
+    }
+    .col-50{
+      display: inline-block;
+      width: 50%;
+    }
+    .mailbody {
+      width: 60%;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 10px;
+    }
+    .mailtitle {
+      width: 100%;
+      background-color: #26cad3;
+      text-align: center;
+      padding: 1.5rem 0;
+      border-radius: 10px 10px 0 0;
+    }
+    .mailtitle p {
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    .form-cont{
+      padding: 2rem 4rem;
+    }
+    .fields {
+      text-transform: uppercase;
+    }
+    .label{
+      color: #555555;
+      font-size: 12px;
+    }
+    .response{
+      line-height: 1.8em;
+    }
+    .seperator{
+      height: 1px;
+      width: 100%;
+      background-color: rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    @media only screen and (max-width: 600px) {
+      .mailbody{
+        margin-top: 85px;
+      }
+      .col-50{
+        display: block;
+        margin-bottom: 20px;
+      }
+      .form-cont{
+        padding:2rem 2rem;
+      }
+      .mailbody {
+      width: 90%;
+      }
+      .fakebg {
+      background-size: 750%;
+      }
+    }
+    </style>
+    <title>Request</title>
+  </head>
+  <body style="padding: 0; margin: 0; font-family: "Play", sans-serif;">
+    <div class="fakebg">
+    <div class="mailbody">
+      <div class="mailtitle">
+        <img src="http://test.terasol.in/nitin/enquiryform/img/mail.jpg">
+        <p>Lead from Terasol&#39;s Website</p>
+      </div>
+      <div class="form-cont">
+        <div class="row">
+          <div class="col-50">
+            <div class="label">Name</div>
+            <div class="response">'.$name.'</div>
+          </div>
+          <div class="col-50">
+            <div class="label">Email</div>
+            <div class="response">'.$email.'</div>
+          </div>
+        </div>
+        <div class=row>
+          <div class=col-50>
+            <div class="label">Phone Number</div>
+            <div class="response"> + '.$pincode.' '.$phone.'</div>
+          </div>
+        </div>
+        <div class="seperator"></div>
+        <div class="row">
+          <div class="col-50">
+            <div class="label">User Type</div>
+            <div class="response">'.$users.'</div>
+          </div>
+          <div class="col-50">
+            <div class="label">Platform</div>
+            <div class="response">'.$platform.'</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-50">
+            <div class="label">Company Name</div>
+            <div class="response">'.$company.'</div>
+          </div>
+          <div class="col-50">
+            <div class="label">Current Position</div>
+            <div class="response">'.$position.'</div>
+          </div>
+        </div>
+        <div class=row>
+          <div class=col-50>
+            <div class="label">LinkedIn Profile</div>
+            <div class="response">'.$linkedin.'</div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </body>
